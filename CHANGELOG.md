@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.3.2](https://github.com/kingsword09/node-html-markdown/compare/v1.3.1...v1.3.2) (2025-05-31)
 
+### Fixes
+
+* Fixed npm publish issue ([b396b57](https://github.com/kingsword09/node-html-markdown/commit/b396b572b3a545769e5830bae395b56e5f9aeb57))
+
 ## [1.3.1](https://github.com/kingsword09/node-html-markdown/compare/v1.3.0...v1.3.1) (2025-05-31)
 
 
