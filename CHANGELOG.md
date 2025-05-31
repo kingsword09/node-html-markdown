@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.1](https://github.com/kingsword09/node-html-markdown/compare/v1.3.0...v1.3.1) (2025-05-31)
+
+
+### Features
+
+* Added `parse` export to parser html ([096b183](https://github.com/kingsword09/node-html-markdown/commit/096b183114d6c15715090f03a1f79d6c3607656f))
+
+
 ## [1.3.0](https://github.com/crosstype/node-html-markdown/compare/v1.2.0...v1.3.0) (2022-12-13)
 
 
