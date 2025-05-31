@@ -1,7 +1,8 @@
 // noinspection HtmlUnknownTarget
+import { beforeEach, describe, test } from "node:test";
+import { strictEqual } from "node:assert";
 
-import { NodeHtmlMarkdown } from '../src';
-
+import { NodeHtmlMarkdown } from "../src";
 
 /* ****************************************************************************************************************** *
  * Tests
@@ -11,40 +12,40 @@ import { NodeHtmlMarkdown } from '../src';
 describe(`Default Tags`, () => {
   let instance: NodeHtmlMarkdown;
   const translateAsBlock = (html: string) => instance.translate(`<pre><code>${html}</code></pre>`);
-  const getExpected = (s: string) => '```\n' + s + '\n```';
-  beforeAll(() => {
+  const getExpected = (s: string) => "```\n" + s + "\n```";
+  beforeEach(() => {
     instance = new NodeHtmlMarkdown();
   });
 
   test(`Line Break (br)`, () => {
     const res = translateAsBlock(`a<br>b`);
-    expect(res).toBe(getExpected(`a\nb`));
+    strictEqual(res, getExpected(`a\nb`));
   });
 
   test(`Horizontal Rule (hr)`, () => {
     const res = translateAsBlock(`a<hr>b`);
-    expect(res).toBe(getExpected(`a\n\n---\n\nb`));
+    strictEqual(res, getExpected(`a\n\n---\n\nb`));
   });
 
   test(`Non-processed Elements (b, strong, del, s, strike, em, i, pre, code, blockquote, a)`, () => {
-    const tags = [ 'b', 'strong', 'del', 's', 'strike', 'em', 'i', 'code', 'a', 'pre', 'blockquote' ];
-    const html = tags.map(t => `<${t}>${t}</${t}>`).join(' ');
-    const exp = 'b strong del s strike em i code a \n\npre\n\n blockquote\n\n';
+    const tags = ["b", "strong", "del", "s", "strike", "em", "i", "code", "a", "pre", "blockquote"];
+    const html = tags.map((t) => `<${t}>${t}</${t}>`).join(" ");
+    const exp = "b strong del s strike em i code a \n\npre\n\n blockquote\n\n";
 
     const res = translateAsBlock(html);
-    expect(res).toBe(getExpected(exp));
+    strictEqual(res, getExpected(exp));
   });
 
   test(`Image (img)`, () => {
     const res = translateAsBlock(`a<img src="https://www.google.com/">b`);
-    expect(res).toBe(getExpected(`ab`));
+    strictEqual(res, getExpected(`ab`));
   });
 
   test(`Headings (h1, h2, h3, h4, h5, h6)`, () => {
     let nodes: string[] = [];
     for (let i = 1; i < 8; i++) nodes.push(`<h${i}>a</h${i}>`);
-    const res = translateAsBlock(nodes.join(''));
-    expect(res).toBe(getExpected('\n[a]\n'.repeat(6) + '\na'));
+    const res = translateAsBlock(nodes.join(""));
+    strictEqual(res, getExpected("\n[a]\n".repeat(6) + "\na"));
   });
 
   // Note: Newline handling here for block elements is unusual
@@ -60,7 +61,12 @@ describe(`Default Tags`, () => {
           </li>
         </ol>
       `);
-      expect(res).toBe(getExpected(`        \n          \n1. a  \nb\n           \n          \n2. b  \n              \n   1. c  \n   d  \n              \n   * e  \n   f\n        \n      `));
+      strictEqual(
+        res,
+        getExpected(
+          `        \n          \n1. a  \nb\n           \n          \n2. b  \n              \n   1. c  \n   d  \n              \n   * e  \n   f\n        \n      `
+        )
+      );
     });
 
     test(`Multi-level Unordered List`, () => {
@@ -74,12 +80,17 @@ describe(`Default Tags`, () => {
           </li>
         </ul>
       `);
-      expect(res).toBe(getExpected(`        \n          \n* a  \nb\n           \n          \n* b  \n              \n   * c  \n   d  \n              \n   1. e  \n   f\n        \n      `));
+      strictEqual(
+        res,
+        getExpected(
+          `        \n          \n* a  \nb\n           \n          \n* b  \n              \n   * c  \n   d  \n              \n   1. e  \n   f\n        \n      `
+        )
+      );
     });
   });
 
   test(`Table`, () => {
-    const res = translateAsBlock('a<tr>b</tr>c<table><td>X</td></table>');
-    expect(res).toBe(getExpected(`a\nb\nc\n\nX\n\n`));
-  })
+    const res = translateAsBlock("a<tr>b</tr>c<table><td>X</td></table>");
+    strictEqual(res, getExpected(`a\nb\nc\n\nX\n\n`));
+  });
 });

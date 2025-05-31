@@ -5,24 +5,7 @@
     "rootDir": "src",
     "outDir": "dist",
     "sourceMap": true,
-    "noErrorTruncation": false,
-    "incremental": true,
 
-    "lib": ["esnext", "dom"],
-    "target": "ES2018",
-    "module": "CommonJS",
-    "moduleResolution": "node",
-
-    "strict": true,
-    "declaration": true,
-    "preserveConstEnums": true,
-    "removeComments": false,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "preserveSymlinks": true,
-    "stripInternal": true,
     "plugins": [
       {
         "transform": "./transformer.js",

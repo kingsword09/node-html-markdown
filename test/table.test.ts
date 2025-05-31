@@ -1,5 +1,7 @@
-import { NodeHtmlMarkdown } from '../src';
+import { describe, test, beforeEach } from "node:test";
+import { strictEqual } from "node:assert";
 
+import { NodeHtmlMarkdown } from "../src";
 
 /* ****************************************************************************************************************** *
  * Tests
@@ -8,39 +10,36 @@ import { NodeHtmlMarkdown } from '../src';
 describe(`Table`, () => {
   let instance: NodeHtmlMarkdown;
   const translate = (html: string) => instance.translate(html);
-  beforeAll(() => {
+  beforeEach(() => {
     instance = new NodeHtmlMarkdown();
   });
 
   test(`Single row, Single column table`, () => {
     const expected = `| col1 |\n| ---- |`;
 
-    expect(translate(`<table><tr><th>  col1 </th></tr></table>`)).toBe(expected);
-    expect(translate(`<table><tr><td>  col1 </td></tr></table>`)).toBe(expected);
-    expect(translate(`<table><td>  col1 </td></table>`)).toBe(expected);
+    strictEqual(translate(`<table><tr><th>  col1 </th></tr></table>`), expected);
+    strictEqual(translate(`<table><tr><td>  col1 </td></tr></table>`), expected);
+    strictEqual(translate(`<table><td>  col1 </td></table>`), expected);
   });
 
   test(`Single row table`, () => {
     const expected = `| col1 | col2 |\n| ---- | ---- |`;
 
-    expect(translate(`<table><tr><th>  col1 </th><td>col2  </td></tr></table>`)).toBe(expected);
-    expect(translate(`<table><tr><td>  col1 </td><td>col2  </td></table>`)).toBe(expected);
-    expect(translate(`<table><td>  col1 </td><td>col2  </td></table>`)).toBe(expected);
+    strictEqual(translate(`<table><tr><th>  col1 </th><td>col2  </td></tr></table>`), expected);
+    strictEqual(translate(`<table><tr><td>  col1 </td><td>col2  </td></table>`), expected);
+    strictEqual(translate(`<table><td>  col1 </td><td>col2  </td></table>`), expected);
   });
 
   test(`Table with caption`, () => {
-    const expected =
-      `__Hello__\n` +
-      `| col1 | col2 |\n` +
-      `| ---- | ---- |`;
+    const expected = `__Hello__\n` + `| col1 | col2 |\n` + `| ---- | ---- |`;
 
-    expect(translate(`<table><caption>Hello</caption><tr><th>  col1 </th><td>col2  </td></tr></table>`)).toBe(expected);
-    expect(translate(`<table><th>  col1 </th><td>col2  </td><caption>Hello</caption></table>`)).toBe(expected);
+    strictEqual(translate(`<table><caption>Hello</caption><tr><th>  col1 </th><td>col2  </td></tr></table>`), expected);
+    strictEqual(translate(`<table><th>  col1 </th><td>col2  </td><caption>Hello</caption></table>`), expected);
   });
 
   describe(`Special Cases`, () => {
     test(`"|" is escaped`, () => {
-      expect(translate(`<table><tr><td>A|B</td></tr></table>`)).toBe(`| A\\|B |\n| ---- |`);
+      strictEqual(translate(`<table><tr><td>A|B</td></tr></table>`), `| A\\|B |\n| ---- |`);
     });
 
     test(`Pads cells`, () => {
@@ -55,12 +54,12 @@ describe(`Table`, () => {
         `| abc1 | def123  | ghi1234567 |\n` +
         `| a    | def1234 | c          |`;
 
-      expect(translate(html)).toBe(expected);
+      strictEqual(translate(html), expected);
     });
 
     test(`Nested tables are not supported`, () => {
       const html = `<table><tr><td><table><tr><td>nested</td></tr></table></td><td>abc</td></tr></table>`;
-      expect(translate(html)).toBe(`| nested | abc |\n| ------ | --- |`);
+      strictEqual(translate(html), `| nested | abc |\n| ------ | --- |`);
     });
 
     test(`Supports inline tags + mismatched rows`, () => {
@@ -96,7 +95,7 @@ describe(`Table`, () => {
         `| **b** | _i_    | [a](link) | ![](file) |\n` +
         `| list  |        | h1        |           |`;
 
-      expect(translate(html)).toBe(expected);
+      strictEqual(translate(html), expected);
     });
   });
 });

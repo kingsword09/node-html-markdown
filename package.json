@@ -12,6 +12,8 @@
     "------------- ": "-------------",
     "benchmark": "cd benchmark && pnpm run benchmark quick",
     "benchmark:large": "cd benchmark && pnpm run benchmark",
+    "test": "node --test --require ts-node/register ./test/**.test.ts",
+    "test:coverage": "node --test --experimental-test-coverage --require ts-node/register ./test/**.test.ts",
     "-------------  ": "-------------",
     "prepare": "ts-patch patch tsc --silent && cd benchmark && pnpm install"
   },
