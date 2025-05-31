@@ -1,6 +1,11 @@
-export { NodeMetadata, NodeMetadataMap } from './visitor'
-export { NodeHtmlMarkdown, FileCollection } from './main'
-export { NodeHtmlMarkdownOptions } from './options'
+export { NodeMetadata, NodeMetadataMap } from "./visitor";
+export { NodeHtmlMarkdown, FileCollection } from "./main";
+export { NodeHtmlMarkdownOptions } from "./options";
 export {
-  TranslatorConfig, TranslatorConfigFactory, TranslatorCollection, PostProcessResult, TranslatorConfigObject
-} from './translator'
+  TranslatorConfig,
+  TranslatorConfigFactory,
+  TranslatorCollection,
+  PostProcessResult,
+  TranslatorConfigObject,
+} from "./translator";
+export { parse } from "node-html-parser";

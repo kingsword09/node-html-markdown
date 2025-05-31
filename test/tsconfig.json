@@ -2,9 +2,9 @@
   "extends": "../tsconfig.base.json",
 
   "compilerOptions": {
-    "types": [ "jest", "node" ],
+    "types": [ "node" ],
     "noEmit": true,
     "incremental": false,
-    "target": "ES2018"
+    "target": "ES2022"
   }
 }

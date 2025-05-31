@@ -25,7 +25,7 @@ We took the approach of producing a _clean, concise_ result with consistent spac
 ## Install
 
 ```sh
-<yarn|npm|pnpm> add node-html-markdown
+<yarn|npm|pnpm> add @kingsword/node-html-markdown
 ```
 
 ## Benchmarks
