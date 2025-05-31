@@ -1,7 +1,5 @@
-[![npm version](https://badge.fury.io/js/node-html-markdown.svg)](https://badge.fury.io/js/ts-patch)
-[![NPM Downloads](https://img.shields.io/npm/dm/node-html-markdown.svg?style=flat)](https://npmjs.org/package/node-html-markdown)
-![Build Status](https://github.com/crosstype/node-html-markdown/workflows/Build%20(CI)/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/crosstype/node-html-markdown/badge.svg?branch=master)](https://coveralls.io/github/crosstype/node-html-markdown?branch=master)
+<a :href="`https://www.npmjs.com/package/@kingsword/node-html-markdown`" target="_blank"><img src="https://img.shields.io/npm/v/@kingsword/node-html-markdown?label=npm" alt="NPM version"></a>
+
 
 # node-html-markdown
 
@@ -237,8 +235,8 @@ These can be modified via the `NodeHtmlMarkdown#translators` property, or added 
 
 __For detail on how to use them see__:
 
-- [translator.ts](https://github.com/crosstype/node-html-markdown/blob/master/src/translator.ts) - Documentation for `TranslatorConfig`
-- [config.ts](https://github.com/crosstype/node-html-markdown/blob/master/src/config.ts) - Translators in `defaultTranslators`
+- [translator.ts](https://github.com/kingsword09/node-html-markdown/blob/master/src/translator.ts) - Documentation for `TranslatorConfig`
+- [config.ts](https://github.com/kingsword09/node-html-markdown/blob/master/src/config.ts) - Translators in `defaultTranslators`
 
 The `NodeHtmlMarkdown#codeBlockTranslators` property is a collection of translators which handles elements within a `<pre><code>` block.
 
@@ -257,9 +255,5 @@ These would be fun to implement; however, for the time being, the present librar
 said, I welcome discussion and any PR toward the effort of further improving performance, and I may ultimately do more
 work in that capacity in the future!
 
-## Help Wanted!
+> This project is forked from [crosstype/node-html-markdown](https://github.com/crosstype/node-html-markdown)
 
-Looking to contribute? Check out our [help wanted] list for a good place to start!
-
-
-[help wanted]: https://github.com/crosstype/node-html-markdown/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
